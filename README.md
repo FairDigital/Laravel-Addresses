@@ -1,6 +1,6 @@
-[![Latest Stable Version](https://poser.pugx.org/lecturize/laravel-addresses/v/stable)](https://packagist.org/packages/lecturize/laravel-addresses)
-[![Total Downloads](https://poser.pugx.org/lecturize/laravel-addresses/downloads)](https://packagist.org/packages/lecturize/laravel-addresses)
-[![License](https://poser.pugx.org/lecturize/laravel-addresses/license)](https://packagist.org/packages/lecturize/laravel-addresses)
+[![Latest Stable Version](https://poser.pugx.org/fairdigital/laravel-addresses/v/stable)](https://packagist.org/packages/fairdigital/laravel-addresses)
+[![Total Downloads](https://poser.pugx.org/fairdigital/laravel-addresses/downloads)](https://packagist.org/packages/fairdigital/laravel-addresses)
+[![License](https://poser.pugx.org/fairdigital/laravel-addresses/license)](https://packagist.org/packages/fairdigital/laravel-addresses)
 
 # Laravel Addresses
 
@@ -10,7 +10,6 @@ Simple address and contact management for Laravel 5 with automatical geocoding t
 
 **This package is a work in progress**, please use with care and feel free to report any issues or ideas you may have!
 
-We've transferred this package to a new owner and therefor updated the namespaces to **Lecturize\Addresses**. The config file is now `config/lecturize.php`.
 
 ## Installation
 
@@ -18,11 +17,11 @@ Require the package from your `composer.json` file
 
 ```php
 "require": {
-	"lecturize/laravel-addresses": "dev-master"
+	"fairdigital/laravel-addresses": "dev-master"
 }
 ```
 
-and run `$ composer update` or both in one with `$ composer require lecturize/laravel-addresses`.
+and run `$ composer update` or both in one with `$ composer require fairdigital/laravel-addresses`.
 
 Next register the following service providers and facades to your `config/app.php` file
 
@@ -30,33 +29,23 @@ Next register the following service providers and facades to your `config/app.ph
 'providers' => [
     // Illuminate Providers ...
     // App Providers ...
-    Lecturize\Addresses\AddressesServiceProvider::class,
-    Webpatser\Countries\CountriesServiceProvider::class,
-];
-```
+    FairDigital\Addresses\AddressesServiceProvider::class,
 
-```php
-'aliases' => [
-	// Illuminate Facades ...
-    'Countries' => Webpatser\Countries\CountriesFacade::class,
 ];
 ```
 
 ## Configuration & Migration
 
 ```bash
-$ php artisan vendor:publish --provider="Webpatser\Countries\CountriesServiceProvider"
-$ php artisan vendor:publish --provider="Lecturize\Addresses\AddressesServiceProvider"
+$ php artisan vendor:publish --provider="FairDigital\Addresses\AddressesServiceProvider"
 ```
 
-This will create a `config/countries.php`, a `config/lecturize.php` and the migration files, that you'll have to run like so:
+This will create a `config/addresses.php` and the migration files, that you'll have to run like so:
 
 ```bash
 $ php artisan countries:migration
 $ php artisan migrate
 ```
-
-Check out [Webpatser\Countries](https://github.com/webpatser/laravel-countries) readme to see how to seed their countries data to your database.
 
 ## Usage
 
@@ -65,7 +54,7 @@ First, add our `HasAddresses` trait to your model.
 ```php
 <?php namespace App\Models;
 
-use Lecturize\Addresses\Traits\HasAddresses;
+use FairDigital\Addresses\Traits\HasAddresses;
 
 class Post extends Model
 {
@@ -147,4 +136,4 @@ Licensed under [MIT license](http://opensource.org/licenses/MIT).
 
 ## Author
 
-**Handcrafted with love by [Alexander Manfred Poellmann](https://twitter.com/AMPoellmann) in Vienna &amp; Rome.**
+**Handcrafted with love by [FairDigital](https://fairdigital.com.au) in Melbourne, Australia.**

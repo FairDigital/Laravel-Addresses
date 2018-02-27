@@ -1,4 +1,4 @@
-<?php namespace Lecturize\Addresses;
+<?php namespace FairDigital\Addresses;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -6,9 +6,6 @@ class AddressesServiceProvider extends ServiceProvider
 {
     protected $migrations = [
         'CreateAddressesTable' => 'create_addresses_table',
-        'CreateContactsTable'  => 'create_contacts_table',
-
-        'AddStreetExtraToAddresses' => 'add_street_extra_to_addresses_table',
     ];
 
     /**
@@ -45,9 +42,9 @@ class AddressesServiceProvider extends ServiceProvider
     {
         $configPath = __DIR__ . '/../config/config.php';
 
-        $this->publishes([$configPath => config_path('lecturize.php')]);
+        $this->publishes([$configPath => config_path('addresses.php')]);
 
-        $this->mergeConfigFrom($configPath, 'lecturize');
+        $this->mergeConfigFrom($configPath, 'addresses');
     }
 
     /**

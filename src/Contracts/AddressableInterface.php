@@ -1,8 +1,8 @@
-<?php namespace Lecturize\Addresses\Contracts;
+<?php namespace FairDigital\Addresses\Contracts;
 
 /**
  * Interface AddressableInterface
- * @package Lecturize\Addresses\Contracts
+ * @package FairDigital\Addresses\Contracts
  */
 interface AddressableInterface
 {

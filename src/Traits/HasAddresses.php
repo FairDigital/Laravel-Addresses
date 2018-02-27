@@ -1,12 +1,11 @@
-<?php namespace Lecturize\Addresses\Traits;
+<?php namespace FairDigital\Addresses\Traits;
 
-use Lecturize\Addresses\Models\Address;
-use Lecturize\Addresses\Exceptions\FailedValidationException;
-use Webpatser\Countries\Countries;
+use FairDigital\Addresses\Models\Address;
+use FairDigital\Addresses\Exceptions\FailedValidationException;
 
 /**
  * Class HasAddresses
- * @package Lecturize\Addresses\Traits
+ * @package FairDigital\Addresses\Traits
  */
 trait HasAddresses
 {
@@ -129,18 +128,6 @@ trait HasAddresses
         // return if no country given
         if (! isset($attributes['country']))
             return $attributes;
-
-        // find country
-        $country = Countries::where('iso_3166_2', $attributes['country'])
-                            ->orWhere('iso_3166_3', $attributes['country'])
-                            ->first();
-
-        // unset country from attributes array
-        unset($attributes['country']);
-
-        // add country_id to attributes array
-        if (is_object($country) && isset($country->id))
-            $attributes['country_id'] = $country->id;
 
         // run validation
         $validator = $this->validateAddress($attributes);

@@ -1,8 +1,8 @@
-<?php namespace Lecturize\Addresses\Exceptions;
+<?php namespace FairDigital\Addresses\Exceptions;
 
 /**
  * Class AddressNotFoundException
- * @package Lecturize\Addresses\Exceptions
+ * @package FairDigital\Addresses\Exceptions
  */
 class AddressNotFoundException extends \Exception
 {

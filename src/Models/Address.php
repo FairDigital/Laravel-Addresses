@@ -1,17 +1,14 @@
-<?php namespace Lecturize\Addresses\Models;
+<?php namespace FairDigital\Addresses\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Lecturize\Addresses\Traits\HasCountry;
-
 /**
  * Class Address
- * @package Lecturize\Addresses\Models
+ * @package FairDigital\Addresses\Models
  */
 class Address extends Model
 {
-    use HasCountry;
     use SoftDeletes;
 
     /**
@@ -23,7 +20,7 @@ class Address extends Model
         'city',
         'state',
         'post_code',
-        'country_id',
+        'country',
         'note',
         'lat',
         'lng',
@@ -46,7 +43,7 @@ class Address extends Model
     {
         parent::__construct($attributes);
 
-        $this->table = config('lecturize.addresses.table', 'addresses');
+        $this->table = config('addresses.table', 'addresses');
     }
 
     /**
@@ -67,7 +64,7 @@ class Address extends Model
         parent::boot();
 
         static::saving(function($address) {
-            if (config('lecturize.addresses.geocode', true))
+            if (config('addresses.geocode', true))
                 $address->geocode();
         });
     }
@@ -85,10 +82,10 @@ class Address extends Model
             'city'         => 'required|string|min:3|max:60',
             'state'        => 'string|min:3|max:60',
             'post_code'    => 'required|min:4|max:10|AlphaDash',
-            'country_id'   => 'required|integer',
+            'country'   => 'required|string',
         ];
 
-        foreach(config('lecturize.addresses.flags', ['public', 'primary', 'billing', 'shipping']) as $flag)
+        foreach(config('addresses.flags', ['public', 'primary', 'billing', 'shipping']) as $flag)
             $rules['is_'.$flag] = 'boolean';
 
         return $rules;
@@ -192,8 +189,8 @@ class Address extends Model
      */
     public function getCountry()
     {
-        if ($this->country && $country = $this->country->name)
-            return $country;
+        if ($this->country)
+            return country($this->country)->getName();
 
         return null;
     }

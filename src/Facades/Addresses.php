@@ -1,10 +1,10 @@
-<?php namespace Lecturize\Addresses\Facades;
+<?php namespace FairDigital\Addresses\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Addresses
- * @package Lecturize\Addresses\Facades
+ * @package FairDigital\Addresses\Facades
  */
 class Addresses extends Facade
 {

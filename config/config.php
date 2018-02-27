@@ -2,37 +2,18 @@
 
 return [
     /*
-     * Addresses
+     * Main table
      */
-    'addresses' => [
-        /*
-         * Main table
-         */
-        'table' => 'addresses',
-
-        /*
-         * Flag columns to be added to table
-         */
-        'flags' => ['public', 'primary', 'billing', 'shipping'],
-
-        /*
-         * Enable geocoding to add coordinates (lon/lat) to addresses
-         */
-        'geocode' => true,
-    ],
+    'table' => 'addresses',
 
     /*
-     * Contacts
+     * Flag columns to be added to table
      */
-    'contacts' => [
-        /*
-         * Main table
-         */
-        'table' => 'contacts',
+    'flags' => ['public', 'primary', 'billing', 'shipping'],
 
-        /*
-         * Flag columns to be added to table
-         */
-        'flags' => ['public', 'primary'],
-    ],
+    /*
+     * Enable geocoding to add coordinates (lon/lat) to addresses
+     */
+    'geocode' => true,
+
 ];

@@ -1,9 +1,9 @@
-<?php namespace Lecturize\Addresses\Traits;
+<?php namespace FairDigital\Addresses\Traits;
 
 /**
  * Class AddressableTrait
  * @deprecated Use HasAddresses trait instead.
- * @package Lecturize\Addresses\Traits
+ * @package FairDigital\Addresses\Traits
  */
 trait AddressableTrait
 {

@@ -1,8 +1,8 @@
-<?php namespace Lecturize\Addresses\Exceptions;
+<?php namespace FairDigital\Addresses\Exceptions;
 
 /**
  * Class FailedValidationException
- * @package Lecturize\Addresses\Exceptions
+ * @package FairDigital\Addresses\Exceptions
  */
 class FailedValidationException extends \Exception
 {
