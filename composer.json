@@ -36,6 +36,11 @@
     "extra": {
         "branch-alias" : {
             "dev-master" : "0.0.x-dev"
+        },
+        "larvel": {
+            "providers": [
+                "FairDigital\\Addresses\\AddressesServiceProvider"
+            ]
         }
     },
     "support" : {

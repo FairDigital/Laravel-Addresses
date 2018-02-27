@@ -23,7 +23,7 @@ Require the package from your `composer.json` file
 
 and run `$ composer update` or both in one with `$ composer require fairdigital/laravel-addresses`.
 
-Next register the following service providers and facades to your `config/app.php` file
+Next register the following service providers to your `config/app.php` file if Laravel<5.5
 
 ```php
 'providers' => [
