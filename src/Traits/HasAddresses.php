@@ -133,7 +133,7 @@ trait HasAddresses
         $validator = $this->validateAddress($attributes);
 
         if ($validator->fails())
-            throw new FailedValidationException('Validator failed for: '. implode(', ', $attributes));
+            throw new FailedValidationException('Validator failed: ' . $validator->getMessageBag()->first());
 
         // return attributes array with country_id key/value pair
         return $attributes;
