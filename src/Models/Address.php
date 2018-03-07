@@ -143,11 +143,13 @@ class Address extends Model
 
         $two[] = $this->post_code ?: '';
         $two[] = $this->city      ?: '';
-        $two[] = $this->state     ? '('. $this->state .')' : '';
+        $two[] = $this->state     ?: '';
 
         $address[] = $this->street       ?: '';
         $address[] = $this->street_extra ?: '';
-        $address[] = implode(' ', array_filter($two));
+        $address[] = $this->city      ?: '';
+        $address[] = $this->post_code ?: '';
+        $address[] = $this->state     ?: '';
         $address[] = $this->getCountry() ?: '';
 
         if (count($address = array_filter($address)) > 0)
