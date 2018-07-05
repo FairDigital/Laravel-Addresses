@@ -98,33 +98,35 @@ class Address extends Model
      */
     public function geocode()
     {
-        // build query string
-        $query = [];
-        $query[] = $this->street       ?: '';
-        $query[] = $this->street_extra ?: '';
-        $query[] = $this->city         ?: '';
-        $query[] = $this->state        ?: '';
-        $query[] = $this->post_code    ?: '';
-        $query[] = $this->getCountry() ?: '';
+        if(!$this->lat && !$this->lng) {
+            // build query string
+            $query = [];
+            $query[] = $this->street       ?: '';
+            $query[] = $this->street_extra ?: '';
+            $query[] = $this->city         ?: '';
+            $query[] = $this->state        ?: '';
+            $query[] = $this->post_code    ?: '';
+            $query[] = $this->getCountry() ?: '';
 
-        // build query string
-        $query = trim(implode(',', array_filter($query)));
-        $query = str_replace(' ', '+', $query);
+            // build query string
+            $query = trim(implode(',', array_filter($query)));
+            $query = str_replace(' ', '+', $query);
 
-        if (! $query)
-            return $this;
+            if (! $query)
+                return $this;
 
-        // build url
-        $url = 'https://maps.google.com/maps/api/geocode/json?address='. $query .'&sensor=false';
+            // build url
+            $url = 'https://maps.google.com/maps/api/geocode/json?address='. $query .'&sensor=false';
 
-        // try to get geo codes
-        if ($geocode = file_get_contents($url)) {
-            $output = json_decode($geocode);
+            // try to get geo codes
+            if ($geocode = file_get_contents($url)) {
+                $output = json_decode($geocode);
 
-            if (count($output->results) && isset($output->results[0])) {
-                if ($geo = $output->results[0]->geometry) {
-                    $this->lat = $geo->location->lat;
-                    $this->lng = $geo->location->lng;
+                if (count($output->results) && isset($output->results[0])) {
+                    if ($geo = $output->results[0]->geometry) {
+                        $this->lat = $geo->location->lat;
+                        $this->lng = $geo->location->lng;
+                    }
                 }
             }
         }
